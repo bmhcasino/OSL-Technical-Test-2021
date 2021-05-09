@@ -3,19 +3,19 @@ Programming Language used: C++
 
 There are 2 POS in this checkout system:
 
-1. Cashier
-   COMPILE:
-   g++ -g cashier.cpp checkout.cpp itemdatabase.cpp -o cashier
+1.  Cashier
+    COMPILE:
+    g++ -g cashier.cpp checkout.cpp itemdatabase.cpp -o cashier
 
-RUN:
-./cashier
+    RUN:
+    ./cashier
 
-2. Sales Manager
-   COMPILE:
-   g++ -g salesmanager.cpp checkout.cpp itemdatabase.cpp -o sales
+2.  Sales Manager
+    COMPILE:
+    g++ -g salesmanager.cpp checkout.cpp itemdatabase.cpp -o sales
+
+    RUN:
+    ./sales
 
 Sales Manager is expected to only adjust itemdatabase off working hours.
-i.e. ./sales and ./cashier should not input commands at the same time
-
-RUN:
-./sales
+i.e. ./sales should not modify itemdatabase while ./cashier is undergoing checkout
