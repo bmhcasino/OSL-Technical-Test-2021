@@ -146,7 +146,6 @@ void ItemDatabase::readDBFile() // DONE
             counter = 0;
         }
     }
-    showcase();
     readFile.close();
 }
 

@@ -12,17 +12,6 @@
 
 using namespace std;
 
-string convertToString(char* a)
-{
-    int size = sizeof(a) / sizeof(char);
-    int i;
-    string s = "";
-    for (i = 0; i < size; i++) {
-        s = s + a[i];
-    }
-    return s;
-}
-
 void itemdb()
 {
     ItemDatabase* i = new ItemDatabase();
@@ -35,7 +24,7 @@ void itemdb()
     {
         cout << endl;
         i->showcase();
-        cout << "\tEnter a command (!help for more info, !cancel to cancel checkout): ";
+        cout << "\tEnter a command (!help for more info, !exit to cancel checkout): ";
         cin >> cmd;
 
         // HELP Command
@@ -48,14 +37,13 @@ void itemdb()
         else if (cmd == "!add")
         {
             string sku, name;
-            char input[100];
             float price;
             cout << "Enter sku of new item: ";
             cin >> sku;
+            cin.ignore();
 
             cout << "Enter name of new item: ";
-            getline(cin, sizeof(input));
-            name = convertToString(input);
+            getline(cin,name);
 
             cout << "Enter price of new item: ";
             cin >> price;
@@ -120,17 +108,12 @@ int main()
         {
             cout << "** List of Commands **" << endl;
             cout << "itemdb: Manage ItemDatabase" << endl;
-            cout << "deals: Manage Promotion Deals" << endl;
             cout << "quit: Exit Sales Manager POS" << endl;
         }
 
         // Checkout Command
         else if (cmd == "itemdb"){
             itemdb();
-        }
-
-         else if (cmd == "deals"){
-            deals();
         }
 
         // Quit Command

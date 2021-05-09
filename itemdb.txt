@@ -1,6 +1,6 @@
 ipd
 Super iPad
-0
+549.99
 mbp
 MacBook Pro
 1399.99
