@@ -1,0 +1,12 @@
+ipd
+Super iPad
+0
+mbp
+MacBook Pro
+1399.99
+atv
+Apple TV
+109.5
+vga
+VGA adapter
+30
