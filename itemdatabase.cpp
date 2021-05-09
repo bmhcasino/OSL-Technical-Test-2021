@@ -101,7 +101,6 @@ void ItemDatabase::saveChanges(){ //DONE
 
    ofstream ofs(itemDBfile, ofstream::trunc);
 
-
    for (auto item : items){
        ofs << item->sku << endl;
        ofs << item->name << endl;
