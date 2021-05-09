@@ -100,8 +100,10 @@ void Checkout::addDeal(){
 
     if (i == 1){
         int x, y; string s;
-        cout << "Input the item sku for the deal: ";
-        cin >> s;
+        do {
+            cout << "Input the item sku for the deal: ";
+            cin >> s;
+        } while (!ItemDB.itemExists(s));
         cout << "Input the amount of items needed for this deal: ";
         cin >> x;
         cout << "Input the amount of items needed to be paid from this deal: ";
@@ -110,8 +112,10 @@ void Checkout::addDeal(){
         deals.push_back(d);
     } else if (i == 2){
         int x; float y; string s;
-        cout << "Input the item sku for the deal: ";
-        cin >> s;
+        do {
+            cout << "Input the item sku for the deal: ";
+            cin >> s;
+        } while (!ItemDB.itemExists(s));
         cout << "Input the min. amount of items needed for this deal: ";
         cin >> x;
         cout << "Input the reduced price of each item: ";
@@ -120,10 +124,14 @@ void Checkout::addDeal(){
         deals.push_back(d);
     } else if (i == 3){
         string s1, s2;
-        cout << "Input the item sku for the deal: ";
-        cin >> s1;
-        cout << "Input the item sku that's bundled in this deal: ";
-        cin >> s2;
+        do {
+            cout << "Input the item sku for the deal: ";
+            cin >> s1;
+        } while (!ItemDB.itemExists(s1));
+        do {
+            cout << "Input the item sku that's bundled in this deal: ";
+            cin >> s2;
+        } while (!ItemDB.itemExists(s2));
         Deal* d = new bundleDeal(s1, s2);
         deals.push_back(d);
     }
