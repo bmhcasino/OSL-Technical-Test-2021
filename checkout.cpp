@@ -32,9 +32,7 @@ void Checkout::print()
          << "\tQUANTITY" << endl;
 
     for (auto item : checkoutList)
-    {
         cout << "\t" << item.first << "\t" << item.second << endl;
-    }
     cout << endl;
 }
 
@@ -50,9 +48,7 @@ void Checkout::add(string &sku)
         cout << "\tAdded '" << sku << "' into list" << endl;
     }
     else
-    {
         cout << "\tItem does not exist in the database";
-    }
 }
 
 void Checkout::rm(string sku)

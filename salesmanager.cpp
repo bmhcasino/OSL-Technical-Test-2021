@@ -1,7 +1,5 @@
 /* cashier.cpp
 // Only for Cashiers
-//
-//
 */
 #include <iostream>
 #include <string>
@@ -21,7 +19,7 @@ void itemdb()
     cout << endl
          << "\t** ItemDatabase Management **" << endl;
 
-    while (true)
+    while (cmd != "!exit")
     {
         cout << endl;
         i->showcase();
@@ -29,10 +27,8 @@ void itemdb()
         cout << "\tEnter a command (!help for more info, !exit to cancel checkout): ";
         cin >> cmd;
 
-        if (cmd == "!help") // DONE
-        {
+        if (cmd == "!help")
             i->help();
-        }
 
         else if (cmd == "!add")
         {
@@ -51,14 +47,14 @@ void itemdb()
             i->addItem(sku, name, price);
         }
 
-        else if (cmd == "!rm") // DONE
+        else if (cmd == "!rm")
         {
             string sku;
             cin >> sku;
             i->removeItem(sku);
         }
 
-        else if (cmd == "!price") // DONE
+        else if (cmd == "!price")
         {
             string sku;
             float price;
@@ -66,33 +62,26 @@ void itemdb()
             i->changePrice(sku, price);
         }
 
-        else if (cmd == "!save") // DONE
-        {
+        else if (cmd == "!save")
             i->saveChanges();
-        }
 
-        else if (cmd == "!exit") // EXIT
-        {
+        else if (cmd == "!exit")
             delete i;
-            break;
-        }
 
-        // INVALID Case
         else
-        {
             cout << "\tInvalid Command! Try Again." << endl;
-        }
     }
 }
 
-void deals(){
+void deals()
+{
     Checkout* c = new Checkout();
     string cmd;
 
     cout << endl
          << "\t** SpecialDeals Management **" << endl;
 
-    while (true)
+    while (cmd != "!exit")
     {
         cout << endl;
         c->printDeals();
@@ -101,14 +90,10 @@ void deals(){
         cin >> cmd;
 
         if (cmd == "!help") 
-        {
             c->dealsHelp();
-        }
 
         else if (cmd == "!add")
-        {
             c->addDeal();
-        }
 
         else if (cmd == "!rm") 
         {
@@ -118,21 +103,13 @@ void deals(){
         }
 
         else if (cmd == "!save") 
-        {
             c->saveDealChanges();
-        }
 
-        else if (cmd == "!exit") // EXIT
-        {
+        else if (cmd == "!exit")
             delete c;
-            break;
-        }
 
-        // INVALID Case
         else
-        {
             cout << "\tInvalid Command! Try Again." << endl;
-        }
     }
 }
 
@@ -147,35 +124,24 @@ int main()
         cout << "Enter a command (help for more info, quit to stop): ";
         cin >> cmd;
 
-        // Help Command
         if (cmd == "help")
         {
             cout << "** List of Commands **" << endl;
             cout << "itemdb: Manage ItemDatabase" << endl;
-            cout << "deals: Manage ItemDatabase" << endl;
+            cout << "deals: Manage SpecialDeals" << endl;
             cout << "quit: Exit Sales Manager POS" << endl;
         }
 
-        // Checkout Command
-        else if (cmd == "itemdb"){
+        else if (cmd == "itemdb")
             itemdb();
-        }
 
-        // Deals Command
-        else if (cmd == "deals"){
+        else if (cmd == "deals")
             deals();
-        }
 
-        // Quit Command
         else if (cmd == "quit")
-        {
             cout << "** Exited Sales Manager POS **" << endl;
-        }
 
-        // Invalid Case
         else
-        {
             cout << "Invalid Command! Try Again." << endl;
-        }
     }
 }

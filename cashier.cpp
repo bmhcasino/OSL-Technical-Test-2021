@@ -99,14 +99,10 @@ int main()
 
         // Quit Command
         else if (cmd == "quit")
-        {
             cout << "** Exited Cashier POS **" << endl;
-        }
 
         // Invalid Case
         else
-        {
             cout << "Invalid Command! Try Again." << endl;
-        }
     }
 }
