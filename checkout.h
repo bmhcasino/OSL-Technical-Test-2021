@@ -7,7 +7,6 @@
 
 using namespace std;
 
-// CHECKOUT Class
 class Checkout
 {
 private:
@@ -117,48 +116,26 @@ private:
     list<Deal*> deals;
     
 public:
-    // constructor
     Checkout();
-
-    // deconstructor;
     ~Checkout();
 
-    // help
     void help();
-
-    // print
     void print();
 
-    // add
     void add(string &sku);
-
-    // remove
     void rm(string sku);
 
-    // cancel
     void cancel();
-
-    // done
     void done();
 
 // --------------------------------
 
-    // addDeal
     void addDeal();
-
-    // removeDeal;
     void rmDeal(int i);
 
-    // dealsHelp
     void dealsHelp();
-
-    // readdeals
-    void readDealsFile();
-
-    // printdeals
     void printDeals();
 
-    // save Changes
+    void readDealsFile();
     void saveDealChanges();
-
 };

@@ -1,11 +1,3 @@
-
-#include <iostream>
-#include <string>
-#include <list>
-#include <fstream>
-#include <exception>
-#include <stdexcept>
-
 #include "itemdatabase.h"
 
 using namespace std;
@@ -14,31 +6,22 @@ string itemDBfile = "itemDB.txt";
 
 void removeSpecialCharacter(string &s)
 {
-    for (int i = 0; i < s.size(); i++) {
-          
-        // Finding the character whose 
-        // ASCII value fall under this
-        // range
+    for (int i = 0; i < s.size(); ++i) {
         if (s[i] < 'A' || s[i] > 'Z' &&
             s[i] < 'a' || s[i] > 'z') 
         {   
-            // erase function to erase 
-            // the character
             s.erase(i, 1); 
             i--;
         }
     }
 }
 
-//================
-
-
-ItemDatabase::ItemDatabase() //DONE
+ItemDatabase::ItemDatabase()
 {
     this->readDBFile();
 }
 
-ItemDatabase::~ItemDatabase() //DONE
+ItemDatabase::~ItemDatabase()
 {
     while (!items.empty())
     {
@@ -47,7 +30,7 @@ ItemDatabase::~ItemDatabase() //DONE
     }
 }
 
-float ItemDatabase::getPrice(string sku) //DONE
+float ItemDatabase::getPrice(string sku)
 {
     for (auto item : items)
         if (item->sku == sku)
@@ -55,7 +38,7 @@ float ItemDatabase::getPrice(string sku) //DONE
     return -1;
 }
 
-bool ItemDatabase::itemExists(string &sku) //DONE
+bool ItemDatabase::itemExists(string &sku)
 {
     for (auto item : items)
         if (item->sku == sku)
@@ -63,8 +46,7 @@ bool ItemDatabase::itemExists(string &sku) //DONE
     return false;
 }
 
-// ---------------------------
-void ItemDatabase::addItem(string sku, string name, float price) //DONE
+void ItemDatabase::addItem(string sku, string name, float price)
 {
     if (!itemExists(sku))
     {
@@ -73,21 +55,21 @@ void ItemDatabase::addItem(string sku, string name, float price) //DONE
     }
 }
 
-void ItemDatabase::removeItem(string sku){ //DONE
+void ItemDatabase::removeItem(string sku)
+{
     for (auto item : items){
         if (item->sku == sku)
         {
             items.remove(item);
             delete item;
-            cout << "Item Removed" << endl;
+            cout << "\tItem Removed" << endl;
             return;
         }
     }
-    cout << "Item Doesn't exist" << endl;
+    cout << "\tItem Doesn't exist" << endl;
 }
-// ---------------------------
 
-void ItemDatabase::changePrice(string sku, float price) //DONE
+void ItemDatabase::changePrice(string sku, float price)
 {
     for (auto item : items)
         if (item->sku == sku){
@@ -95,23 +77,18 @@ void ItemDatabase::changePrice(string sku, float price) //DONE
         }
 }
 
-// ---------------------------
-
-void ItemDatabase::saveChanges(){ //DONE
-
+void ItemDatabase::saveChanges()
+{
    ofstream ofs(itemDBfile, ofstream::trunc);
-
    for (auto item : items){
        ofs << item->sku << endl;
        ofs << item->name << endl;
        ofs << item->price << endl;
    }
-
    ofs.close();
-
 }
 
-void ItemDatabase::readDBFile() // DONE
+void ItemDatabase::readDBFile()
 {
     ifstream readFile;
     readFile.open(itemDBfile);
@@ -139,7 +116,6 @@ void ItemDatabase::readDBFile() // DONE
         }
         else if (counter == 2)
         {
-            // cout <<line << endl;
             price = stof(line);
             addItem(sku, name, price);
             counter = 0;
@@ -148,14 +124,10 @@ void ItemDatabase::readDBFile() // DONE
     readFile.close();
 }
 
-// ---------------------------
-
-void ItemDatabase::showcase() //DONE
+void ItemDatabase::showcase()
 {
     for (auto item : items)
-    {
         item->print();
-    }
 }
 
 void ItemDatabase::help(){
@@ -163,5 +135,5 @@ void ItemDatabase::help(){
     cout << "\t!rm <sku>: Remove Item into Checkout" << endl;
     cout << "\t!price <sku> <price>: Change Price of Item" << endl;
     cout << "\t!save: Save Changes in Database" << endl;
-    cout << "\t!exit : Finish Checkout" << endl;
+    cout << "\t!exit: Finish Checkout" << endl;
 }

@@ -1,13 +1,9 @@
-/* cashier.cpp
-// Only for Cashiers
+/* salesmanager.cpp
+// Only for Sales Managers
 */
 #include <iostream>
 #include <string>
-#include <map>
-#include <exception>
-#include "itemdatabase.h"
 #include "checkout.h"
-#include <bits/stdc++.h>
 
 using namespace std;
 

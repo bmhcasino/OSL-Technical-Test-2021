@@ -4,8 +4,6 @@
 #include <string>
 #include <list>
 #include <fstream>
-#include <exception>
-#include "itemdatabase.h"
 
 using namespace std;
 

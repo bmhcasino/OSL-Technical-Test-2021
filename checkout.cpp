@@ -70,20 +70,18 @@ void Checkout::cancel()
 
 void Checkout::done()
 {
-    //deal purchases
+    // Deals
     for (auto deal : deals){
         deal->run(checkoutList, TotalPrice, ItemDB);
     }
 
-    //normal purchases
+    // Normal Purchases
     for (auto item : checkoutList)
        TotalPrice += ItemDB.getPrice(item.first) * item.second;
 
     cout << "\tTotal expected:" << TotalPrice << endl;
 
 }
-
-// ==========================
 
 void Checkout::addDeal(){
     
@@ -141,7 +139,7 @@ void Checkout::addDeal(){
     }
 }
 
-void Checkout::rmDeal(int i) // DONE
+void Checkout::rmDeal(int i)
 {
     int count = 0;
     for (auto deal : deals){
@@ -162,7 +160,7 @@ void Checkout::dealsHelp()
     cout << "\t!exit : Exit SpecialDeals" << endl;
 }
 
-void Checkout::readDealsFile() // DONE
+void Checkout::readDealsFile()
 {
     ifstream readFile;
     readFile.open(itemDealsFile);
@@ -196,11 +194,10 @@ void Checkout::readDealsFile() // DONE
             deals.push_back(d);
         }
     }
-    // printDeals();
     readFile.close();
 }
 
-void Checkout::printDeals() // DONE
+void Checkout::printDeals()
 {
     int counter = 0;
     for (auto deal : deals){
@@ -209,7 +206,7 @@ void Checkout::printDeals() // DONE
     }
 }
 
-void Checkout::saveDealChanges() // DONE
+void Checkout::saveDealChanges()
 {
     ofstream ofs(itemDealsFile, ofstream::trunc);
 

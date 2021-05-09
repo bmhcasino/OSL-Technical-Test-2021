@@ -1,7 +1,5 @@
 /* cashier.cpp
 // Only for Cashiers
-//
-//
 */
 #include <iostream>
 #include <string>
@@ -26,37 +24,30 @@ void checkoutSystem()
         cout << "\tEnter a command (!help for more info, !cancel to cancel checkout): ";
         cin >> cmd;
 
-        // HELP Command
-        if (cmd == "!help") // DONE
-        {
+        if (cmd == "!help")
             c->help();
-        }
 
-        // ADD Command
-        else if (cmd == "!add") // DONE
+        else if (cmd == "!add") 
         {
             string sku;
             cin >> sku;
             c->add(sku);
         }
 
-        // REMOVE Command
-        else if (cmd == "!rm") // DONE
+        else if (cmd == "!rm")
         {
             string sku;
             cin >> sku;
             c->rm(sku);
         }
 
-        // CANCEL Command
-        else if (cmd == "!cancel") // DONE
+        else if (cmd == "!cancel") 
         {
             c->cancel();
             delete c;
             break;
         }
 
-        // DONE Command
         else if (cmd == "!done")
         {
             c->done();
@@ -64,11 +55,8 @@ void checkoutSystem()
             break;
         }
 
-        // INVALID Case
         else
-        {
             cout << "\tInvalid Command! Try Again." << endl;
-        }
     }
 }
 
@@ -83,7 +71,6 @@ int main()
         cout << "Enter a command (help for more info, quit to stop): ";
         cin >> cmd;
 
-        // Help Command
         if (cmd == "help")
         {
             cout << "** List of Commands **" << endl;
@@ -91,17 +78,12 @@ int main()
             cout << "quit: Exit Cashier POS" << endl;
         }
 
-        // Checkout Command
         else if (cmd == "checkout")
-    {
-    checkoutSystem();
-        }
+            checkoutSystem();
 
-        // Quit Command
         else if (cmd == "quit")
             cout << "** Exited Cashier POS **" << endl;
 
-        // Invalid Case
         else
             cout << "Invalid Command! Try Again." << endl;
     }
