@@ -28,7 +28,7 @@ private:
 
         void print()
         {
-            cout << sku << "\t" << price << "\t" << name << endl;
+            cout <<"\t" << sku << "\t" << price << "\t" << name << endl;
         }
     };
 

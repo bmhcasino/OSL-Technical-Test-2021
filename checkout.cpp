@@ -90,46 +90,54 @@ void Checkout::done()
 // ==========================
 
 void Checkout::addDeal(){
-    cout << "1) X for Y Deal" << endl;
-    cout << "2) Bulk Purchase Deal" << endl;
-    cout << "3) Bundle Deal" << endl;
-    cout << "Enter the index of Deal Type: ";
-
+    
     int i;
+    cout << "\t1) X for Y Deal" << endl;
+    cout << "\t2) Bulk Purchase Deal" << endl;
+    cout << "\t3) Bundle Deal" << endl;
+    cout << "\tEnter the index of Deal Type: ";
     cin >> i;
 
     if (i == 1){
         int x, y; string s;
         do {
-            cout << "Input the item sku for the deal: ";
+            cout << endl;
+            ItemDB.showcase();
+            cout << "\tInput the item sku for the deal: ";
             cin >> s;
         } while (!ItemDB.itemExists(s));
-        cout << "Input the amount of items needed for this deal: ";
+        cout << "\tInput the amount of items needed for this deal: ";
         cin >> x;
-        cout << "Input the amount of items needed to be paid from this deal: ";
+        cout << "\tInput the amount of items needed to be paid from this deal: ";
         cin >> y;
         Deal* d = new xForYDeal(x, y, s);
         deals.push_back(d);
     } else if (i == 2){
         int x; float y; string s;
         do {
-            cout << "Input the item sku for the deal: ";
+            cout << endl;
+            ItemDB.showcase();
+            cout << "\tInput the item sku for the deal: ";
             cin >> s;
         } while (!ItemDB.itemExists(s));
-        cout << "Input the min. amount of items needed for this deal: ";
+        cout << "\tInput the min. amount of items needed for this deal: ";
         cin >> x;
-        cout << "Input the reduced price of each item: ";
+        cout << "\tInput the reduced price of each item: ";
         cin >> y;
         Deal* d = new bulkDeal(x, y, s);
         deals.push_back(d);
     } else if (i == 3){
         string s1, s2;
         do {
-            cout << "Input the item sku for the deal: ";
+            cout << endl;
+            ItemDB.showcase();
+            cout << "\tInput the item sku for the deal: ";
             cin >> s1;
         } while (!ItemDB.itemExists(s1));
         do {
-            cout << "Input the item sku that's bundled in this deal: ";
+            cout << endl;
+            ItemDB.showcase();
+            cout << "\tInput the item sku that's bundled in this deal: ";
             cin >> s2;
         } while (!ItemDB.itemExists(s2));
         Deal* d = new bundleDeal(s1, s2);
@@ -144,7 +152,7 @@ void Checkout::rmDeal(int i) // DONE
         if (count++ == i){
             deals.remove(deal);
             delete deal;
-            cout << "Deal Removed" << endl;
+            cout << "\tDeal Removed" << endl;
             return;
         }
     }
@@ -198,10 +206,9 @@ void Checkout::readDealsFile() // DONE
 
 void Checkout::printDeals() // DONE
 {
-    cout << "--Special Deals--" << endl;
     int counter = 0;
     for (auto deal : deals){
-        cout << counter++ << ") ";
+        cout << "\t" << counter++ << ") ";
         deal->print();
     }
 }

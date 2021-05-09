@@ -25,6 +25,7 @@ void itemdb()
     {
         cout << endl;
         i->showcase();
+        cout << endl;
         cout << "\tEnter a command (!help for more info, !exit to cancel checkout): ";
         cin >> cmd;
 
@@ -37,14 +38,14 @@ void itemdb()
         {
             string sku, name;
             float price;
-            cout << "Enter sku of new item: ";
+            cout << "\tEnter sku of new item: ";
             cin >> sku;
             cin.ignore();
 
-            cout << "Enter name of new item: ";
+            cout << "\tEnter name of new item: ";
             getline(cin,name);
 
-            cout << "Enter price of new item: ";
+            cout << "\tEnter price of new item: ";
             cin >> price;
 
             i->addItem(sku, name, price);
@@ -95,6 +96,7 @@ void deals(){
     {
         cout << endl;
         c->printDeals();
+        cout << endl;
         cout << "\tEnter a command (!help for more info, !exit to cancel checkout): ";
         cin >> cmd;
 
